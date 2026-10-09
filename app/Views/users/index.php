@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= esc($title) ?> | POS System</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/customers">Customer Accounts</a>
+        <a href="/users">User Accounts</a>
+    </nav>
+
+    <h1><?= esc($title) ?></h1>
+
+    <p>Below are the staff records stored in a temporary PHP array.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= esc($user['username']) ?></td>
+                    <td><?= esc($user['full_name']) ?></td>
+                    <td><?= esc($user['role']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</body>
+</html>
