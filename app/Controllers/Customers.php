@@ -2,43 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\CustomerModel;
+
 class Customers extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        $customers = [
-            [
-                'full_name' => 'Andrea Santos',
-                'email'     => 'andrea.santos@example.com',
-                'phone'     => '0917-000-0001',
-            ],
-            [
-                'full_name' => 'Miguel Reyes',
-                'email'     => 'miguel.reyes@example.com',
-                'phone'     => '0917-000-0002',
-            ],
-            [
-                'full_name' => 'Camille Garcia',
-                'email'     => 'camille.garcia@example.com',
-                'phone'     => '0917-000-0003',
-            ],
-            [
-                'full_name' => 'Joshua Mendoza',
-                'email'     => 'joshua.mendoza@example.com',
-                'phone'     => '0917-000-0004',
-            ],
-            [
-                'full_name' => 'Patricia Cruz',
-                'email'     => 'patricia.cruz@example.com',
-                'phone'     => '0917-000-0005',
-            ],
-        ];
+        $customerModel = new CustomerModel();
 
-        $data = [
-            'title'     => 'Customer Accounts',
-            'customers' => $customers,
-        ];
+        $customers = $customerModel->findAll();
 
-        return view('customers/index', $data);
+        return view('customers/index', [
+        'title'     => 'Customer Accounts',   
+        'customers' => $customers,
+        ]);
     }
 }
